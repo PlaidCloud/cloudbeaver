@@ -31,7 +31,7 @@ jobs:
           push: true
           pull: true
           no-cache: true
-          file: ./docker/cloudbeaver-ce/Dockerfile
+          file: ./deploy/docker/cloudbeaver-ce/Dockerfile
           build-args: |
             PLAID_BUILD_TAG=${{ steps.docker_tag.outputs.tag }}
           tags: us-docker.pkg.dev/plaidcloud-build/us-plaidcloud/cloudbeaver:latest,us-docker.pkg.dev/plaidcloud-build/us-plaidcloud/cloudbeaver:${{ steps.docker_tag.outputs.tag }}
