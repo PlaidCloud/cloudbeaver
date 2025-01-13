@@ -1,13 +1,15 @@
 name: CI
 
 on:
-  pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
-  push:
-    branches: [devel]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+#  pull_request:
+#    types:
+#      - opened
+#      - synchronize
+#      - reopened
+#  push:
+#    branches: [devel]
 
 concurrency:
   group: ${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'push-pr-devel' }}
