@@ -1,8 +1,8 @@
 name: IO Build Docker Image
 on:
-#  push:
-#    branches:
-#      - master
+  #  push:
+  #    branches:
+  #      - master
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 jobs:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-# Backend Build
+      # Backend Build
       - uses: actions/checkout@v4
         with:
           path: cloudbeaver
@@ -35,8 +35,7 @@ jobs:
         shell: bash
         working-directory: ./cloudbeaver/deploy
 
-
-# Frontend Build
+      # Frontend Build
       - run: corepack enable
         working-directory: ./cloudbeaver/webapp
       - uses: actions/setup-node@v4
@@ -79,8 +78,7 @@ jobs:
         run: mkdir ./cloudbeaver/web && cp -rp ../webapp/packages/product-default/lib/* cloudbeaver/web
         working-directory: ./cloudbeaver/deploy
 
-
-# Create and tag image
+      # Create and tag image
       - name: Create tag
         id: docker_tag
         run: |
