@@ -43,7 +43,7 @@ jobs:
         with:
           node-version: "20"
           cache: yarn
-          cache-dependency-path: cloudbeaver/webapp/yarn.lock
+          cache-dependency-path: ./cloudbeaver/webapp/yarn.lock
 
       - name: restore node_modules
         uses: actions/cache@v4
@@ -74,6 +74,10 @@ jobs:
 
       - run: yarn test
         working-directory: ./cloudbeaver/webapp
+
+      - name: Copy Static Content
+        run: mkdir ./cloudbeaver/web && cp -rp ../webapp/packages/product-default/lib/* cloudbeaver/web
+        working-directory: ./cloudbeaver/deploy
 
 
 # Create and tag image
